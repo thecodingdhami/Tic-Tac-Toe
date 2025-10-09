@@ -40,7 +40,7 @@ Download the andriod app to play offline:
 
 ## 🕹 How to Play
 
-1. Open `game.html` in your browser.  
+1. Open `(https://thecodingdhami.github.io/Tic-Tac-Toe/)` in your browser.  
 2. Choose **game mode** (friend or robot).  
 3. Click on empty cells to place your symbol (D or S).  
 4. First player to get 3 in a row **wins**!  
