@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0f7fa, #ffffff);
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 320px;
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #00796b;
+    text-shadow: 0 0 5px #00bfa5;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.cell {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff80;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00796b;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 0 6px rgba(0, 150, 136, 0.5);
+}
+
+.cell:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px #00bfa5, 0 0 18px #00e5ff;
+}
+
+.winning-cell {
+    background: #00bfa5;
+    color: #fff;
+    box-shadow: 0 0 15px #00e5ff, 0 0 25px #00bfa5;
+}
+
+#status {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    min-height: 22px;
+    color: #004d40;
+}
+
+button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #00796b;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 4px;
+    transition: 0.2s;
+    box-shadow: 0 0 8px #00bfa5;
+}
+
+button:hover {
+    background-color: #00bfa5;
+    box-shadow: 0 0 12px #00e5ff;
+    transform: scale(1.05);
+}
+
+@media (max-width: 400px) {
+    .cell {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}

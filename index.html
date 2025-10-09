@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tic-Tac-Toe</h1>
+        <p>Choose a mode to play:</p>
+        <button onclick="startGame('friend')">Play with Friend</button>
+        <button onclick="startGame('robot')">Play with Robot</button>
+    </div>
+
+    <script>
+        function startGame(mode) {
+            // Save mode in localStorage to use in game page
+            localStorage.setItem('mode', mode);
+            window.location.href = 'game.html';
+        }
+    </script>
+</body>
+</html>
