@@ -21,19 +21,20 @@ A **modern, responsive, and futuristic Tic-Tac-Toe** game built with **HTML, CSS
 
 ## ▶ Play Game From Here
 
-Play directly (locally or online):
+Play directly online:
 
-[🎮 Play Tic-Tac-Toe](./game.html)
+[🎮 Play Tic-Tac-Toe](https://thecodingdhami.github.io/Tic-Tac-Toe/)
+
 
 ---
 
 ## ⬇ Download Game
 
-Download the full project as a **ZIP file** to play offline:
+Download the andriod app to play offline:
 
 [💾 Download Tic-Tac-Toe](https://github.com/<your-username>/<your-repo>/archive/refs/heads/main.zip)
 
-> Replace `<your-username>` and `<your-repo>` with your GitHub username and repository name.
+
 
 ---
 
@@ -53,22 +54,21 @@ Download the full project as a **ZIP file** to play offline:
 
 ---
 
-## 💻 Installation
 
-1. Clone the repository:
-
-```bash
-git clone <repository-url>
-Open game.html in any modern web browser.
-
-Enjoy the neon glow and have fun! 🎉
 
 🛠 Technologies Used
-HTML5
 
-CSS3
+![HTML](https://img.shields.io/badge/HTML5-orange?logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-blue?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-yellow?logo=javascript&logoColor=black)
 
-JavaScript
+
+---
 
 📄 License
 This project is licensed under the MIT License.
+
+---
+
+## © Dinesh Singh Dhami
+
