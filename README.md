@@ -32,7 +32,7 @@ Play directly online:
 
 Download the andriod app to play offline:
 
-[💾 Download Tic-Tac-Toe](https://github.com/<your-username>/<your-repo>/archive/refs/heads/main.zip)
+[💾 Still in progress](https://www.dineshsinghdhami.com.np)
 
 
 
