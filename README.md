@@ -23,7 +23,7 @@ A **modern, responsive, and futuristic Tic-Tac-Toe** game built with **HTML, CSS
 
 Play directly online:
 
-[🎮 Play Tic-Tac-Toe](https://thecodingdhami.github.io/Tic-Tac-Toe/)
+[🎮 Play Tic-Tac-Toe](https://dineshsinghdhami.com.np/Tic-Tac-Toe/)
 
 
 ---
