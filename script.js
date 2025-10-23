@@ -12,50 +12,57 @@ const winningCombinations = [
     [0,4,8], [2,4,6]
 ];
 
-function checkWinner(board=boardState) {
+function checkWinner(board = boardState) {
     for (let combo of winningCombinations) {
         const [a,b,c] = combo;
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-            return {winner: board[a], combo: combo};
+            return { winner: board[a], combo: combo };
         }
     }
-    if (!board.includes('')) return {winner: 'Draw'};
+    if (!board.includes('')) return { winner: 'Draw' };
     return null;
 }
 
 function makeMove(index, player) {
-    if (!boardState[index]) {
-        boardState[index] = player;
-        cells[index].innerText = player;
-        const result = checkWinner();
-        if (result) {
-            if (result.winner === 'Draw') {
-                status.innerText = "It's a Draw!";
-            } else {
-                status.innerText = `${result.winner} Wins!`;
-                highlightWinningCells(result.combo);
-            }
-            cells.forEach(cell => cell.removeEventListener('click', handleClick));
-            restartBtn.style.display = 'inline-block';
-            return true;
+    if (boardState[index]) return false; // Prevent overwriting
+    boardState[index] = player;
+    cells[index].innerText = player;
+
+    const result = checkWinner();
+    if (result) {
+        if (result.winner === 'Draw') {
+            status.innerText = "It's a Draw!";
+        } else {
+            status.innerText = `${result.winner} Wins!`;
+            highlightWinningCells(result.combo);
         }
-        return false;
+        // Remove click listeners when game ends
+        cells.forEach(cell => cell.removeEventListener('click', handleClick));
+        restartBtn.style.display = 'inline-block';
+        return true;
     }
+    return false;
 }
 
 function highlightWinningCells(combo) {
     if (!combo) return;
-    combo.forEach(i => {
-        cells[i].classList.add('winning-cell');
-    });
+    combo.forEach(i => cells[i].classList.add('winning-cell'));
 }
 
+
 function handleClick(e) {
-    const index = e.target.dataset.index;
+    const index = parseInt(e.target.dataset.index);
+
+   
+    if (boardState[index]) return;
+
     if (gameMode === 'friend' || (gameMode === 'robot' && currentPlayer === 'D')) {
         const gameOver = makeMove(index, currentPlayer);
         if (!gameOver) {
+            // Switch player
             currentPlayer = currentPlayer === 'D' ? 'S' : 'D';
+
+            // Robot move if applicable
             if (gameMode === 'robot' && currentPlayer === 'S') {
                 setTimeout(robotMove, 300);
             }
@@ -63,19 +70,22 @@ function handleClick(e) {
     }
 }
 
+
 function robotMove() {
     const bestMove = minimax(boardState, 'S').index;
-    makeMove(bestMove, 'S');
-    currentPlayer = 'D';
+    if (bestMove !== undefined) {
+        makeMove(bestMove, 'S');
+        currentPlayer = 'D';
+    }
 }
 
 function minimax(newBoard, player) {
     const availSpots = newBoard.map((v,i) => v === '' ? i : null).filter(i => i !== null);
     const result = checkWinner(newBoard);
     if (result) {
-        if (result.winner === 'D') return {score: -10};
-        if (result.winner === 'S') return {score: 10};
-        if (result.winner === 'Draw') return {score: 0};
+        if (result.winner === 'D') return { score: -10 };
+        if (result.winner === 'S') return { score: 10 };
+        if (result.winner === 'Draw') return { score: 0 };
     }
 
     const moves = [];
@@ -124,7 +134,13 @@ function restartGame() {
     status.innerText = '';
     currentPlayer = 'D';
     restartBtn.style.display = 'none';
-    cells.forEach(cell => cell.addEventListener('click', handleClick));
+
+    // Remove previous listeners and re-add to prevent duplicates
+    cells.forEach(cell => {
+        cell.removeEventListener('click', handleClick);
+        cell.addEventListener('click', handleClick);
+    });
+
     if (gameMode === 'robot' && currentPlayer === 'S') {
         setTimeout(robotMove, 300);
     }
@@ -134,5 +150,6 @@ function goBack() {
     window.location.href = 'index.html';
 }
 
+// Event listeners
 restartBtn.addEventListener('click', restartGame);
 cells.forEach(cell => cell.addEventListener('click', handleClick));
