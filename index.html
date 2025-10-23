@@ -4,31 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Base & Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
 
-    <link rel="manifest" href="manifest.json">
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f0f3f7, #d9e2ec);
+        }
 
-    <meta name="theme-color" content="#000000">
+        .container {
+            background: #fff;
+            padding: 25px 18px; /* tighter padding */
+            border-radius: 25px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 280px; /* smaller width */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 35px rgba(0,0,0,0.12);
+        }
+
+        h1 {
+            font-size: 1.9rem; /* smaller header */
+            color: #1e2022;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.05rem; /* smaller paragraph */
+            margin-bottom: 20px;
+            color: #34495e;
+        }
+
+        .mode-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* tighter gap */
+        }
+
+        .mode-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px; /* smaller padding */
+            border: none;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: #fff;
+            cursor: pointer;
+            font-size: 0.95rem; /* smaller font */
+            font-weight: 600;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 18px rgba(52,152,219,0.25);
+        }
+
+        .mode-btn:hover {
+            background: linear-gradient(135deg, #2980b9, #2471a3);
+            box-shadow: 0 8px 20px rgba(41,128,185,0.35);
+            transform: translateY(-1.5px);
+        }
+
+        .mode-btn i {
+            font-size: 1.3rem; /* slightly smaller icon */
+        }
+
+        .go-back {
+            margin-top: 15px;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 15px;
+            background: #bdc3c7;
+            color: #2c3e50;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            transition: all 0.25s ease;
+        }
+
+        .go-back:hover {
+            background: #95a5a6;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 420px) {
+            .container {
+                width: 82%;
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .mode-btn {
+                padding: 9px 16px;
+                font-size: 0.85rem;
+            }
+
+            .mode-btn i {
+                font-size: 1.1rem;
+            }
+
+            .go-back {
+                padding: 7px 14px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+    <!-- FontAwesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
         <h1>Tic-Tac-Toe</h1>
         <p>Choose a mode to play:</p>
-        <button onclick="startGame('friend')">Play with Friend</button>
-        <button onclick="startGame('robot')">Play with Robot</button>
+        <div class="mode-buttons">
+            <button class="mode-btn" onclick="startGame('friend')">
+                <i class="fas fa-user-friends"></i> Play with Friend
+            </button>
+            <button class="mode-btn" onclick="startGame('robot')">
+                <i class="fas fa-robot"></i> Play with Robot
+            </button>
+        </div>
+        
     </div>
 
     <script>
         function startGame(mode) {
-            // Save mode in localStorage to use in game page
             localStorage.setItem('mode', mode);
             window.location.href = 'game.html';
-        }
-
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js')
-                .then(() => console.log("Service Worker Registered"))
-                .catch((err) => console.log("Service Worker Failed:", err));
         }
     </script>
 </body>
